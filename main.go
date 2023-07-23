@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
-	"os"
+	// "net/http"
+	// "os"
         "fmt"
 	 "database/sql"
     _ "github.com/lib/pq"
