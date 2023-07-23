@@ -38,16 +38,16 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           
-      - name: executing remote ssh commands using ssh key
-        uses: ./
-        with:
-           host: ${{ secrets.HOST }}
-           username: ${{ secrets.USERNAME }}
-           key: ${{ secrets.KEY }}
-           port: ${{ secrets.PORT }}
-           script: |
-             whoami
-             microk8s kubectl set image deployment/my-web-app my-web-app=rubisha/firstgo:latest
+#       - name: executing remote ssh commands using ssh key
+#         uses: ./
+#         with:
+#            host: ${{ secrets.HOST }}
+#            username: ${{ secrets.USERNAME }}
+#            key: ${{ secrets.KEY }}
+#            port: ${{ secrets.PORT }}
+#            script: |
+#              whoami
+#              microk8s kubectl set image deployment/my-web-app my-web-app=rubisha/firstgo:latest
           
       
 #   testing01:
