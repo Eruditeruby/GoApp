@@ -52,6 +52,12 @@ func main() {
         CheckError(err)
   
         fmt.Println("Connected!")
+
+	  // insert
+    // hardcoded
+       insertStmt := `insert into "users"("name", "age") values('Jacob', 20)`
+       _, e := db.Exec(insertStmt)
+       CheckError(e)
    }
  
       func CheckError(err error) {
