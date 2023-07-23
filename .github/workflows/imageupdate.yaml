@@ -16,6 +16,14 @@ jobs:
         password: ${{secrets.KEY}}
         port: ${{secrets.PORT}}
         script: whoami
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v1.0.4
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        script: whoami
         
 #    testing01:
 #       name: image update
