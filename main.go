@@ -7,11 +7,11 @@ import (
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("<h1>Hello Ruby!</h1>"))
+	w.Write([]byte("<h1>Hello Ruby hi!</h1>"))
 }
 
 func main() {
-        fmt.Println("Hello Ruby1")  
+        fmt.Println("Hello Ruby2")  
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "3000"
@@ -21,5 +21,5 @@ func main() {
 
 	mux.HandleFunc("/", indexHandler)
 	http.ListenAndServe(":"+port, mux)
-         fmt.Println("Hello Ruby2")
+        
 }
