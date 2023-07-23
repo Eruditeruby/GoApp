@@ -10,7 +10,7 @@ jobs:
        - name: checkout
          uses: actions/checkout@v1
        - name: executing remote ssh commands using ssh key
-         uses: ./
+         uses: easingthemes/ssh-deploy@main
          with:
            host: ${{ secrets.HOST }}
            username: ${{ secrets.USERNAME }}
