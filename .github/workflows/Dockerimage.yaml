@@ -38,16 +38,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           
-      
-  testing01:
-      name: image update
-      runs-on: ubuntu-latest
-      steps:
-       - name: checkout
-         uses: actions/checkout@v1
-       - name: executing remote ssh commands using ssh key
-         uses: ./
-         with:
+      - name: executing remote ssh commands using ssh key
+        uses: ./
+        with:
            host: ${{ secrets.HOST }}
            username: ${{ secrets.USERNAME }}
            key: ${{ secrets.KEY }}
@@ -55,3 +48,12 @@ jobs:
            script: |
              whoami
              microk8s kubectl set image deployment/my-web-app my-web-app=rubisha/firstgo:latest
+          
+      
+#   testing01:
+#       name: image update
+#       runs-on: ubuntu-latest
+#       steps:
+#        - name: checkout
+#          uses: actions/checkout@v1
+
