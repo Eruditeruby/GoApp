@@ -15,7 +15,10 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY1 }}
         port: ${{ secrets.PORT }}
-        script: whoami
+        script: |
+          whoami
+          microk8s kubectl set image deployment/my-web-app my-web-app=rubisha/firstgo:latest
+          exit
         
 #    testing01:
 #       name: image update
