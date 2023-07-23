@@ -11,7 +11,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-        fmt.Println("Hello Ruby")  
+        fmt.Println("Hello Ruby1")  
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "3000"
@@ -21,5 +21,5 @@ func main() {
 
 	mux.HandleFunc("/", indexHandler)
 	http.ListenAndServe(":"+port, mux)
-         fmt.Println("Hello World2")
+         fmt.Println("Hello Ruby2")
 }
