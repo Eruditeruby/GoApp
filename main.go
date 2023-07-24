@@ -15,8 +15,6 @@ const (
     dbname   = "user_db"
 )
 
-
-
 // func indexHandler(w http.ResponseWriter, r *http.Request) {
 // 	w.Write([]byte("<h1>Hello Ruby hi!</h1>"))
 // }
@@ -54,9 +52,25 @@ func main() {
 
 	  // insert
     // hardcoded
-       insertStmt := `insert into "users"("name", "age") values('Jacob', 20)`
-       _, e := db.Exec(insertStmt)
-       CheckError(e)
+       // insertStmt := `insert into "users"("name", "age") values('Jacob', 20)`
+       // _, e := db.Exec(insertStmt)
+       // CheckError(e)
+
+	rows, err := db.Query(`SELECT "name", "age" FROM "users"`)
+        CheckError(err)
+ 
+       defer rows.Close()
+       for rows.Next() {
+       var name string
+       var age int
+ 
+       err = rows.Scan(&name, &age)
+       CheckError(err)
+ 
+    fmt.Println(name, age)
+       }
+ 
+     CheckError(err)
    }
 
 
