@@ -17,7 +17,10 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           whoami
+          sudo -i
+          docker pull rubisha:firstgo:main
           microk8s kubectl set image deployment/my-web-app my-web-app=rubisha/firstgo:latest
+          microk8s kubectl apply -f userpage.yaml
           exit
         
 #    testing01:
