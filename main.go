@@ -38,7 +38,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
    // code to fetch data from Database.
 	rows, err := db.Query(`SELECT "name", "age" FROM "users"`)
         CheckError(err)
-	w.Write([]byte("<h1>Hello Ruby hi!</h1>"))
+	w.Write([]byte("<h1>User List!</h1>"))
        defer rows.Close()
    for rows.Next() {
        var name string
@@ -46,7 +46,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
  
        err = rows.Scan(&name, &age)
        CheckError(err)
-       w.Write([]byte("<h1>Hello</h1>"+name))
+       w.Write([]byte("<h1>Hello" + name </h1>"))
  
        fmt.Println(name, age)
    }
