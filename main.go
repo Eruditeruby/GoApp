@@ -14,48 +14,24 @@ const (
     password = "postgress"
     dbname   = "user_db"
 )
-
-// func indexHandler(w http.ResponseWriter, r *http.Request) {
-// 	w.Write([]byte("<h1>Hello Ruby hi!</h1>"))
-// }
-
-
 var db *sql.DB
 func main() {
- //        fmt.Println("Hello Ruby2")  
-	// port := os.Getenv("PORT")
-	// if port == "" {
-	// 	port = "3000"
-	// }
-
-	// mux := http.NewServeMux()
-
-	// mux.HandleFunc("/", indexHandler)
-	// http.ListenAndServe(":"+port, mux)
-
-  // code for connection
-
-	 psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+     // code for connection
+      psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
          
-        //Open database
-         db, err := sql.Open("postgres", psqlconn)
-          CheckError(err)
+   //Open database
+           db, err := sql.Open("postgres", psqlconn)
+	   CheckError(err)
      
-        //Close database
+   //Close database
         defer db.Close()
  
-        // check db
+   // check db
         err = db.Ping()
         CheckError(err)
-  
         fmt.Println("Connected!")
-
-	  // insert
-    // hardcoded
-       // insertStmt := `insert into "users"("name", "age") values('Jacob', 20)`
-       // _, e := db.Exec(insertStmt)
-       // CheckError(e)
-
+	
+   // code to fetch data from Database.
 	rows, err := db.Query(`SELECT "name", "age" FROM "users"`)
         CheckError(err)
  
@@ -67,16 +43,11 @@ func main() {
        err = rows.Scan(&name, &age)
        CheckError(err)
  
-    fmt.Println(name, age)
+       fmt.Println(name, age)
        }
- 
-     CheckError(err)
+       CheckError(err)
    }
-
-
-
-
-      func CheckError(err error) {
+     func CheckError(err error) {
         if err != nil {
         panic(err)
        }
