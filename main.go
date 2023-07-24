@@ -62,7 +62,7 @@ func CheckError(err error) {
 
 func main() {
      // code for connection
-        fmt.Println("Hello Ruby2")  
+        fmt.Println("Container Started")  
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "3000"
