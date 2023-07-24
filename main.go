@@ -14,10 +14,12 @@ const (
     password = "postgress"
     dbname   = "user_db"
 )
+
+
 var db *sql.DB
-func main() {
-     // code for connection
-      psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	 psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
          
    //Open database
            db, err := sql.Open("postgres", psqlconn)
@@ -34,21 +36,40 @@ func main() {
    // code to fetch data from Database.
 	rows, err := db.Query(`SELECT "name", "age" FROM "users"`)
         CheckError(err)
- 
+	w.Write([]byte("<h1>Hello Ruby hi!</h1>"))
        defer rows.Close()
-       for rows.Next() {
+   for rows.Next() {
        var name string
        var age int
  
        err = rows.Scan(&name, &age)
        CheckError(err)
+       w.Write([]byte("<h1>Hello</h1>"+name))
  
        fmt.Println(name, age)
-       }
-       CheckError(err)
    }
-     func CheckError(err error) {
+       CheckError(err)
+}
+
+func CheckError(err error) {
         if err != nil {
         panic(err)
        }
+}
+	
+
+func main() {
+     // code for connection
+        fmt.Println("Hello Ruby2")  
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
+
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/", indexHandler)
+	http.ListenAndServe(":"+port, mux)
+ 
+
   }
