@@ -46,7 +46,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
  
        err = rows.Scan(&name, &age)
        CheckError(err)
-       w.Write([]byte("<h1>Hello" + name </h1>"))
+       w.Write([]byte("<h1>Hello" + name "</h1>"))
  
        fmt.Println(name, age)
    }
